@@ -5,6 +5,7 @@ apply plugin: 'idea'
 
 apply plugin: 'tomcat'
 apply plugin: 'war'
+// apply plugin: 'jar'
 
 apply plugin: 'cloudfoundry'
 
@@ -20,8 +21,8 @@ sourceSets {
     }
 }
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 archivesBaseName = "spring-music"
 
 //jar {
@@ -114,7 +115,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.9'
+    gradleVersion = '4.2.1'
 }
 
 war {
