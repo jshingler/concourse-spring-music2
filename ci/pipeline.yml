@@ -15,13 +15,16 @@ jobs:
       trigger: true
     # - get: version
     #   params: { pre: rc }
+
     - task: build-artifact
       file: git-repo/ci/tasks/build-artifact.yml
-      timeout: 5m
+      timeout: 6m
+
     - put: artifact
       params:
-        file: task-output/example-webapp-*.jar
-        pom_file: source-code/pom.xml
+        file: artifact-dir/spring-music-*.jar
+        version_file: git-repo/version
+        # pom_file: source-code/pom.xml
 #     - put: release-candidate
 #       params:
 #         file: artifact-dir/spring-music*.war
@@ -128,8 +131,8 @@ resources:
 - name: artifact
   type: maven-resource
   source:
-    url: http://localhost:8081/repository/odt-maven-release/
-    snapshot_url: http://localhost:8081/repository/odt-maven-snapshot/
+    url: http://192.168.1.122:8081/repository/odt-maven-release/
+    snapshot_url: http://192.168.1.122:8081/repository/odt-maven-snapshot/
     artifact: com.example:spring-music:jar
     username: admin
     password: admin123
